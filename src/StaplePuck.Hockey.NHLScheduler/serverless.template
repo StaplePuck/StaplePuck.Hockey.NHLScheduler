@@ -1,0 +1,39 @@
+{
+  "AWSTemplateFormatVersion" : "2010-09-09",
+  "Transform" : "AWS::Serverless-2016-10-31",
+  "Description" : "The serverless application for the StaplePuck NHL Scheduler Service",
+  "Parameters": {
+    "SettingsApiUrlRoot": {
+      "Type": "String"
+    }
+  },
+  "Resources" : {
+    "CalculatorFunction" : {
+      "Type" : "AWS::Serverless::Function",
+      "Properties": {
+        "Handler": "StaplePuck.Hockey.NHLScheduler::StaplePuck.Hockey.NHLScheduler.LambdaEntryPoint::ProcessMessage",
+        "Runtime": "dotnet8",
+        "CodeUri": "",
+        "Description": "NHL Schedule Service",
+        "MemorySize": 256,
+        "Timeout": 45,
+        "Role": null,
+        "Policies": [ "AWSLambda_FullAccess" ],
+        "Environment": {
+          "Variables": {
+            "Settings__ApiUrlRoot": { "Ref": "SettingsApiUrlRoot" }
+          }
+        },
+        "Events": {
+          "SchedulerSchedule": {
+            "Type": "ScheduleV2",
+            "Properties": {
+              "ScheduleExpression": "rate(1 minute)",
+              "Input": ""
+            }
+          }
+        }
+      }
+    }
+  }
+}
