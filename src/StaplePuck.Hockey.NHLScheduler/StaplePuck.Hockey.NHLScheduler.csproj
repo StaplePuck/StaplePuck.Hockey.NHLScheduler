@@ -14,4 +14,10 @@
     <PackageReference Include="StaplePuck.Core" Version="2.2.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="nlog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

@@ -72,6 +72,7 @@ public class Scheduler : IScheduler
             await _scheduleClient.CreateStateScheduleAsync(dateDetails, cancellationToken);
             await _scheduleClient.CreateGamesScheduleAsync(dateDetails, minStart, maxStart, cancellationToken);
             await _scheduleClient.CreateDayAfterScheduleAsync(dateDetails, cancellationToken);
+            _logger.LogInformation($"Created schedules for {gameDateId}. Playoffs: {isPlayoffs}");
         }
     }
 }

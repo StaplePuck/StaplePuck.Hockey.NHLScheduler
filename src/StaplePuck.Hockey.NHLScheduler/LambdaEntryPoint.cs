@@ -13,9 +13,8 @@ namespace StaplePuck.Hockey.NHLScheduler
         {
         }
 
-        public async Task ProcessMessage(ILambdaContext context)
+        public async Task ProcessMessage(string input, ILambdaContext context)
         {
-            await Task.CompletedTask;
             var tokenSource = new CancellationTokenSource();
             var scheduler = Scheduler.Init();
             await scheduler.CreateSchedulesAsync(tokenSource.Token);
