@@ -46,7 +46,7 @@
             "Properties": {
               "ScheduleExpression": "cron(0 3 * * ? *)",
               "ScheduleExpressionTimezone": "UTC",
-              "Input": ""
+              "Input": "{}"
             }
           }
         }
