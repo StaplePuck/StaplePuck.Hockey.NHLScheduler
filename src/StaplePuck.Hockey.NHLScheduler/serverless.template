@@ -3,7 +3,19 @@
   "Transform" : "AWS::Serverless-2016-10-31",
   "Description" : "The serverless application for the StaplePuck NHL Scheduler Service",
   "Parameters": {
-    "SettingsApiUrlRoot": {
+    "ApiUrlRoot": {
+      "Type": "String"
+    },
+    "StatsLambdaARN": {
+      "Type": "String"
+    },
+    "RoleARN": {
+      "Type": "String"
+    },
+    "MinutesBetweenRuns": {
+      "Type": "String"
+    },
+    "MinutesAfterLastGameStarts": {
       "Type": "String"
     }
   },
@@ -21,14 +33,19 @@
         "Policies": [ "AWSLambda_FullAccess" ],
         "Environment": {
           "Variables": {
-            "Settings__ApiUrlRoot": { "Ref": "SettingsApiUrlRoot" }
+            "Settings__ApiUrlRoot": { "Ref": "ApiUrlRoot" },
+            "Settings__StatsLambdaARN": { "Ref": "StatsLambdaARN" },
+            "Settings__RoleARN": { "Ref": "RoleARN" },
+            "Settings__MinutesBetweenRuns": { "Ref": "MinutesBetweenRuns" },
+            "Settings__MinutesAfterLastGameStarts": { "Ref": "MinutesAfterLastGameStarts" }
           }
         },
         "Events": {
           "SchedulerSchedule": {
             "Type": "ScheduleV2",
             "Properties": {
-              "ScheduleExpression": "rate(1 minute)",
+              "ScheduleExpression": "cron(0 3 * * ? *)",
+              "ScheduleExpressionTimezone": "UTC",
               "Input": ""
             }
           }

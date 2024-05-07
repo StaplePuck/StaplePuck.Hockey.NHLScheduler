@@ -46,4 +46,4 @@ jobs:
       
       - name: Deploy to Lambda
         working-directory: ./src/StaplePuck.Hockey.NHLScheduler
-        run: dotnet lambda deploy-serverless -sn prod-staplepuck-scheduler -tp 'Auth0Audience="${{ vars.Auth0__Audience }}";Auth0ClientId="${{ secrets.Auth0__ClientId }}";Auth0ClientSecret="${{ secrets.Auth0__ClientSecret }}";Auth0TokenUrl="${{ vars.Auth0__TokenUrl }}";StaplePuckEndpoint="${{ vars.STAPLEPUNK__ENDPOINT }}";SettingsStatsUrlRoot="${{ vars.NHL_STATSURL }}";SettingsApiUrlRoot="${{ vars.NHL_APIURL }}"'
+        run: dotnet lambda deploy-serverless -sn prod-staplepuck-scheduler -tp 'ApiUrlRoot="${{ vars.ApiUrlRoot }}";StatsLambdaARN="${{ vars.StatsLambdaARN }}";RoleARN="${{ vars.RoleARN }}";MinutesBetweenRuns="${{ vars.MinutesBetweenRuns }}";MinutesAfterLastGameStarts="${{ vars.MinutesAfterLastGameStarts }}"'
