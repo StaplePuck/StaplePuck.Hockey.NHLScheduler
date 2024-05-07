@@ -30,7 +30,7 @@
         "MemorySize": 256,
         "Timeout": 45,
         "Role": null,
-        "Policies": [ "AWSLambda_FullAccess" ],
+        "Policies": [ "AWSLambda_FullAccess", "AmazonEventBridgeSchedulerFullAccess" ],
         "Environment": {
           "Variables": {
             "Settings__ApiUrlRoot": { "Ref": "ApiUrlRoot" },
