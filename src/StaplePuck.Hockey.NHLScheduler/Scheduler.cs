@@ -51,7 +51,7 @@ public class Scheduler : IScheduler
 
     public async Task CreateSchedulesAsync(CancellationToken cancellationToken)
     {
-        var gameDateId = DateTime.Now.AddDays(1).ToGameDateId();
+        var gameDateId = DateTime.UtcNow.ToGameDateId();
         var gameDateData = await _nhlClient.GetGamesOnDateAsync(gameDateId, cancellationToken);
         if (gameDateData == null)
         {

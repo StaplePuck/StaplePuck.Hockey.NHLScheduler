@@ -44,7 +44,7 @@
           "SchedulerSchedule": {
             "Type": "ScheduleV2",
             "Properties": {
-              "ScheduleExpression": "cron(0 2 * * ? *)",
+              "ScheduleExpression": "cron(0 8 * * ? *)",
               "ScheduleExpressionTimezone": "UTC",
               "Input": "{}"
             }
