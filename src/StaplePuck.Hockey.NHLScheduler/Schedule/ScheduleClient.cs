@@ -41,7 +41,8 @@ namespace StaplePuck.Hockey.NHLScheduler.Schedule
                 Name = $"{SchedulePrefix(dateDetails)}_gameStats",
                 ScheduleExpression = $"rate({_settings.MinutesBetweenRuns} Minutes)",
                 ScheduleExpressionTimezone = "UTC",
-                FlexibleTimeWindow = new FlexibleTimeWindow { Mode = FlexibleTimeWindowMode.OFF }
+                FlexibleTimeWindow = new FlexibleTimeWindow { Mode = FlexibleTimeWindowMode.OFF },
+                ActionAfterCompletion = ActionAfterCompletion.DELETE
             };
             try
             {
@@ -75,7 +76,8 @@ namespace StaplePuck.Hockey.NHLScheduler.Schedule
                 Name = $"{SchedulePrefix(dateDetails)}_gameState",
                 ScheduleExpression = $"at({date.ToString("yyyy-MM-ddTHH:mm:ss")})",
                 ScheduleExpressionTimezone = "UTC",
-                FlexibleTimeWindow = new FlexibleTimeWindow { Mode = FlexibleTimeWindowMode.FLEXIBLE, MaximumWindowInMinutes = 30 }
+                FlexibleTimeWindow = new FlexibleTimeWindow { Mode = FlexibleTimeWindowMode.FLEXIBLE, MaximumWindowInMinutes = 30 },
+                ActionAfterCompletion = ActionAfterCompletion.DELETE
             };
             try
             {
@@ -110,7 +112,8 @@ namespace StaplePuck.Hockey.NHLScheduler.Schedule
                 Name = $"{SchedulePrefix(dateDetails)}_final",
                 ScheduleExpression = $"at({date.ToString("yyyy-MM-ddTHH:mm:ss")})",
                 ScheduleExpressionTimezone = "UTC",
-                FlexibleTimeWindow = new FlexibleTimeWindow { Mode = FlexibleTimeWindowMode.FLEXIBLE, MaximumWindowInMinutes = 30 }
+                FlexibleTimeWindow = new FlexibleTimeWindow { Mode = FlexibleTimeWindowMode.FLEXIBLE, MaximumWindowInMinutes = 30 },
+                ActionAfterCompletion = ActionAfterCompletion.DELETE
             };
             try
             {
